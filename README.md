@@ -17,3 +17,13 @@
 # 程式架構
 
 -   在原有的 MVC 架構上加上 Service、Repostiory、Presenter 等用法, 可隨時根據業務邏輯需求擴充功能：Request 進來後先經由一層 before middleware 做初步統一處理, 而後交由 Controller 去做總控, 若業務邏輯複雜, 則將該部分放置於 Service 並由 Controller 呼叫 function 執行；將資料庫邏輯抽換到 Repository 層做管理, 凡有執行到資料庫邏輯則將這塊在 Controller 或者 Service 呼叫 Repository 內的 function 處理, 處理完業務邏輯後將資料透過 Resource 包裝為 API 需要的架構, 並加入 Presenter 去做資料 format, 最後透過統一控管的 ApiResponse 內部 function 將 API 回傳結構做統一管理.
+
+# 使用方法
+
+-   `git clone` 後先執行 `composer i`
+-   env 設定本地資料庫連線資訊後執行 `php artisan migrate`
+-   執行 `php artisan serve` 啟動 server
+-   透過 Restful API `http://127.0.0.1:8000/api/book-categories` 去做書本類別的管理
+-   透過 Restful API `http://127.0.0.1:8000/api/book-tags` 去做書本標籤的管理
+-   透過 Restful API `http://127.0.0.1:8000/api/books` 去做書本的管理
+-   要注意如果 server 啟動的 port 非預設的 8000 則要根據情境修改 host
